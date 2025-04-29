@@ -4,9 +4,9 @@ const authMiddleware = require('../middlewares/auth.Middleware');
 const router = express.Router();
 
 router.get('/', getAllSensors);
-router.post('/',authMiddleware, createSensor);
+router.post('/', createSensor);
 router.get('/:id', getSensorById);
-router.put('/:id',authMiddleware, updateSensor);
-router.delete('/:id',authMiddleware, deleteSensor);
+router.put('/:id', updateSensor);
+router.delete('/:id', deleteSensor);
 
 module.exports = router;

@@ -1,9 +1,11 @@
 const Reading = require("../models/reading");
 const moment = require("moment");
+const sanitize = require('mongo-sanitize');
 
 // Obtener todas las lecturas de un sensor
 const getReadingsBySensor = async (req, res) => {
   try {
+    
       let query;
 
       try {
@@ -11,7 +13,7 @@ const getReadingsBySensor = async (req, res) => {
       } catch {
           query = { sensorId: req.params.sensorId };
       }
-
+      console.log(sanitize(query));
       const readings = await Reading.find(query);
 
       if (!readings.length) {

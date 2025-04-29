@@ -2,7 +2,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const MONGO_URI = process.env.MONGO_CREDENTIALS || 'mongodb://localhost:27017/sensores';
+const MONGO_URI = 'mongodb://TU_NOMBRE:TUCONTRASEÑA@localhost:27017/sensores?authSource=admin';
 
 const connectDB = async () => {
     try {
