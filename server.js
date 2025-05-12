@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 const sensorRoutes = require('./routes/sensors.routes');
 const readingRoutes = require('./routes/readings.routes');
 const authRoutes = require('./routes/auth.routes');
+const broker = require('./services/broker');
 
 const app = express();
 const port = 3000;
@@ -26,5 +27,7 @@ app.use('/auth', authRoutes);
 // Ruta de prueba
 app.get('/test', (req, res) => res.json({ msg: 'El API REST funciona!' }));
 
-// Iniciar servidor
+// Arrancar servicios
+broker.startBroker(); // Iniciar el broker MQTT
+
 app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}`));
